@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Ressolles-0W6oz.ttf",
+      "sha1": "c2f0cd35d57590610be49c6ce1ffe3aa11eb62b8"
+    },
+    {
+      "path": "src/assets/fonts/Ressolles-4B61K.otf",
+      "sha1": "b145ba656e1988437e16336f24f8b2de26ffd8a7"
+    },
+    {
+      "path": "src/assets/fonts/Sabarian-EaYgW.otf",
+      "sha1": "14c6d7ccd83c27dcfb38fc336e0b7ead6e2db6e8"
+    },
+    {
+      "path": "src/assets/fonts/Sabarian-OVPr6.ttf",
+      "sha1": "ff5d620f826b85d94c65f0f69ac1e4472d230b4c"
+    }
+  ]
+}

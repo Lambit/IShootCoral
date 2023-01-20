@@ -1,14 +1,19 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { NativeBaseProvider } from 'native-base';
+import { appTheme }from './theme/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import InitialStack from './navigation/inital-native-stack/InitialStack';
 
 
+
 const App = () => {
+  // const { colors }
   return (
-    <NavigationContainer>
+    <NativeBaseProvider theme={appTheme}>
+    <NavigationContainer >
       <InitialStack />
     </NavigationContainer>
+    </NativeBaseProvider>
   );
 };
 

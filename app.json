@@ -1,4 +1,5 @@
 {
   "name": "IShootCoral",
-  "displayName": "IShootCoral"
+  "displayName": "IShootCoral",
+  "backgroundColor": "#000"
 }

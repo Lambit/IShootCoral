@@ -1,15 +1,22 @@
 import React from 'react';
+
+//Components & Constants
 import { windowHeight, windowWidth } from '../utilities/constants';
-import { HStack, useTheme, Text, VStack, View, Box } from 'native-base';
-import Svg, { Path, Image, ClipPath, Ellipse, G, Line, Rect, Use, Symbol, Circle, Defs,  
-} from 'react-native-svg';
 import { LoadingButton } from '../components/buttons/buttons';
 
+//Packages
+import { HStack, useTheme, Text, VStack, View, Box } from 'native-base';
+import Svg, { 
+  Path, Image, ClipPath, Ellipse, G, Line, Rect, Use, Symbol, Circle, Defs,  
+} from 'react-native-svg';
 
 
+/*----OnBoardingScreen-------
+    OnBoardingScreen
+*/ 
 
 function OnBoardingScreen({navigation, route,}) {
-  const { color, contain, fonts, letSpace, screens, bR, shadowAndroid } = useTheme();
+  const { color, contain, fonts, shadowAndroid } = useTheme();
 
   const toHome = () => { 
     navigation.navigate('HomeStack')

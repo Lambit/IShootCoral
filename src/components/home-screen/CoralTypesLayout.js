@@ -8,7 +8,6 @@ const CoralTypesLayout = ({typeId, onPress, source, typeText}) => {
   return (
     <Pressable 
         id={typeId}
-        key={typeId}
         my='26'
         justifyContent='center'
         alignSelf='flex-start'

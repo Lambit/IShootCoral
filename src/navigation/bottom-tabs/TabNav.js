@@ -86,12 +86,11 @@ const TabNav = () => {
         // })} 
      /> 
     <Tab.Screen name="About" component={AboutScreen} 
-        // options={({ navigation, route }) => ({
-        //   tabBarIcon: ({color, size}) => (
-        //     <Feather name='user' color={color} size={22} navigation={navigation} route={route}/>
-        //   ),
-          
-        // })} 
+        options={({ navigation, route }) => ({
+          headerTitle: () => (<Text textAlign='center' fontSize='24' fontFamily={fonts.head} color={color.yellow} navigation={navigation} route={route} >I Shoot Coral</Text>),
+          headerShown: true,
+          headerStyle: { backgroundColor: color.black, },
+      })} 
      /> 
 
   </Tab.Navigator>

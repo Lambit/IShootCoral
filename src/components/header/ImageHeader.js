@@ -1,14 +1,21 @@
 import React from 'react'
+
+//Components & Constants
 import { windowHeight, windowWidth } from '../../utilities/constants';
+import Overlay from '../overlay/Overlay';
+
+//Packages
 import { useTheme, View, Image, Text } from 'native-base';
 
-const ImageHeader = ({source, text}) => {
-      const { color, fonts } = useTheme();
+
+
+const ImageHeader = ({source, textColor, text}) => {
+      const { fonts } = useTheme();
   return (
-    <View flex={1} bg={color.black} >
+    <View width={windowWidth} height={windowHeight / 8}>
       <Image 
-        width={windowWidth}
-        height={windowHeight / 8}
+        width='100%'
+        height='100%'
         position='absolute'
         top={0}
         right={0}
@@ -17,6 +24,17 @@ const ImageHeader = ({source, text}) => {
         zIndex={0}
         source={source}
       />
+      <Overlay />
+
+      <Text 
+        p='4' 
+        zIndex='2'
+        fontFamily={fonts.head} 
+        fontSize='42' 
+        color={textColor}
+    > 
+        {text}
+    </Text>
 
       <Image
           maxH='60'
@@ -27,9 +45,7 @@ const ImageHeader = ({source, text}) => {
           zIndex={0}
           source={require('../../assets/images/logo/ishoot-logo.png')}
       />
-      {/* <View flex={1} alignSelf='center' flexDirection='row' position='absolute' bottom='0' >
-      <Text zIndex={2} fontFamily={fonts.subHead} fontSize='36' color={color.yellow} >{text}</Text>
-      </View> */}
+      
     </View>
   );
 };

@@ -2,9 +2,10 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import OnBoardingScreen from '../../screens/OnBoardingScreen';
-import ZoaScreen from '../../screens/ZoaScreen';
-import SpsScreen from '../../screens/SpsScreen';
-import LpsScreen from '../../screens/LpsScreen';
+import ZoaScreen from '../../screens/coral-screens/ZoaScreen';
+import SpsScreen from '../../screens/coral-screens/SpsScreen';
+import LpsScreen from '../../screens/coral-screens/LpsScreen';
+import CoralModal from '../../screens/coral-screens/CoralModal';
 
 import TabNav from '../bottom-tabs/TabNav';
 
@@ -24,7 +25,10 @@ const menuStackOptions = ({ navigation, route }) => {
 
 function InitialStack({navigation, route}) {
   return (
-    <Stack.Navigator initialRouteName='Board'>
+    <Stack.Navigator 
+      initialRouteName='Board'
+      // screenOptions={}
+    >
         <Stack.Screen name="Board" component={OnBoardingScreen} 
           options={({ navigation }) => ({
                 headerShown: false,
@@ -37,6 +41,7 @@ function InitialStack({navigation, route}) {
         />
         <Stack.Screen name="ZOA" component={ZoaScreen} 
                 options={({ navigation, route }) => ({
+                  headerStyle: { backgroundColor: 'black', },
               })}
         />
         <Stack.Screen name="SPS" component={SpsScreen} 
@@ -45,6 +50,12 @@ function InitialStack({navigation, route}) {
         />
         <Stack.Screen name="LPS" component={LpsScreen} 
                 options={({ navigation, route }) => ({
+              })}
+        />
+        <Stack.Screen name="Modal" component={CoralModal} 
+                options={({ navigation, route }) => ({
+                  headerShown: false,
+                  presentation: 'transparentModal'
               })}
         />
         

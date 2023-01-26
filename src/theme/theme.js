@@ -10,6 +10,8 @@ export const appTheme = extendTheme({
         aqua: '#67e8f9',
         red: '#d44444',
         pink: '#f20079',
+        green: '#39ff14',
+        o: '#FF5733',
         overlay: 'rgba(255,255,255, 0.2)',
     },
     fonts:{

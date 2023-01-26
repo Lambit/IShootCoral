@@ -22,8 +22,8 @@ export default function HomeScreen({navigation, route,}) {
  
         <ImageHeader 
           source={require('../assets/images/common/nem-header.jpg')}
-          text='I Shoot Coral'
-          textColor={color.yellow}
+          // text='I Shoot Coral'
+          // textColor={color.yellow}
         />
 
         <View my='20' mx='10'>

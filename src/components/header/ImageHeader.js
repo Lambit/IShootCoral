@@ -12,7 +12,7 @@ import { useTheme, View, Image, Text } from 'native-base';
 const ImageHeader = ({source, textColor, text}) => {
       const { fonts } = useTheme();
   return (
-    <View width={windowWidth} height={windowHeight / 8}>
+    <View width={windowWidth} height={windowHeight / 6}>
       <Image 
         width='100%'
         height='100%'

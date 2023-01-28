@@ -14,5 +14,6 @@
         "Yodas",
         "Zoas"
     ],
-    "editor.renderWhitespace": "none"
+    "editor.renderWhitespace": "none",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

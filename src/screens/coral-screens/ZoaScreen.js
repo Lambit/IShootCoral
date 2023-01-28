@@ -2,8 +2,9 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 
 //Components & Constants
+import { windowHeight, windowWidth } from '../../utilities/constants';
 import SelectedTypeLayout from '../../components/screen-layouts/SelectedTypeLayout';
-import PageHeader from '../../components/header/PageHeader';
+import ImageHeader from '../../components/header/ImageHeader';
 
 // Packages
 import { FlatList, useTheme } from 'native-base';
@@ -43,6 +44,10 @@ const ZoaScreen = ({ navigation, route }) => {
             --------------*/
             <SelectedTypeLayout 
                 {...coral}
+                viewH={(windowHeight / 2 / 2 - 30)} 
+                viewW={windowWidth - 30} 
+                pressH={(windowHeight / 2 / 2 - 40)} 
+                pressW={windowWidth - 40}
                 id={coral.id}
                 imageSrc={coral.image}
                 nameStr={coral.name}
@@ -72,7 +77,13 @@ const ZoaScreen = ({ navigation, route }) => {
                 renderItem={renderItem}
                 keyExtractor={(coral, indx) => `${coral.id}-${indx}`}
                 ListHeaderComponent={
-                    <PageHeader text='Zoas' />
+                    // <PageHeader text='Zoas' />
+                    <ImageHeader 
+                        source={require('../../assets/images/common/Purple-monster-common.jpeg')}
+                        textP='ZOAS'
+                        size='md'
+                        w='120'
+                     /> 
                 }       
             />
 

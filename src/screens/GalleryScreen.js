@@ -2,9 +2,10 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 
 //Components & Constants
-import GalleryLayout from '../components/screen-layouts/GalleryLayout';
+import { windowWidth, windowHeight, oniOS } from '../utilities/constants';
+import SelectedTypeLayout from '../components/screen-layouts/SelectedTypeLayout';
 import { GALLERY } from '../assets/data/static-data';
-import PageHeader from '../components/header/PageHeader';
+import ImageHeader from '../components/header/ImageHeader';
 
 //Packages
 import { useTheme, FlatList } from 'native-base';
@@ -40,8 +41,12 @@ function GalleryScreen({navigation, route,}) {
             /*-------------
              *  Layout    *
             --------------*/
-            <GalleryLayout 
+            <SelectedTypeLayout 
                 {...coral}
+                viewH={(windowHeight / 2 / 2 - 30)} 
+                viewW={windowWidth / 2 - 20} 
+                pressH={(windowHeight / 2 / 2 - 40)} 
+                pressW={windowWidth / 2 - 20}
                 id={coral.id}
                 imageSrc={coral.image}
                 typeStr={coral.id}
@@ -63,7 +68,7 @@ function GalleryScreen({navigation, route,}) {
             <FlatList
                 numColumns='2'
                 showsVerticalScrollIndicator={false}
-                columnWrapperStyle={{ justifyContent: 'space-between', paddingHorizontal: 4}}
+                columnWrapperStyle={{ justifyContent: 'space-between', paddingHorizontal: 4, }}
                 scrollEventThrottle={16}
                 decelerationRate='normal'
                 initialNumToRender={4}
@@ -71,7 +76,12 @@ function GalleryScreen({navigation, route,}) {
                 renderItem={renderItem}
                 keyExtractor={(coral, indx) => `${coral.id}-${indx}`}
                 ListHeaderComponent={
-                    <PageHeader text='GALLERY' />   
+                    <ImageHeader 
+                        source={require('../assets/images/common/nem-header.jpg')}
+                        textP='Gallery'
+                        size='md'
+                        w='160'
+                     />   
                 }       
             />
 

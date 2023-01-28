@@ -10,7 +10,7 @@ import Feather from 'react-native-vector-icons/Feather';
 ----------------------------------*/ 
 export const LoadingButton = ({ 
     //loading state/activity
-    isLoading, isDisabled, _spinner, onPress, 
+    isLoading, isDisabled, _spinner, onPress, onPressIn, 
     //style/text displayed
     m, mx, my, mb, pb, py, px, w, text 
     }) => {
@@ -21,6 +21,7 @@ export const LoadingButton = ({
             isDisabled={isDisabled}
             _spinner={_spinner}
             onPress={onPress}
+            onPressIn={onPressIn}
             m={m}
             mx={mx}
             my={my}

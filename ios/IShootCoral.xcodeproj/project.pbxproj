@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* IShootCoralTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* IShootCoralTests.m */; };
-		06021A225D34422C9D8B4D38 /* Ressolles-4B61K.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87E686EDA8364CD28FC38CF8 /* Ressolles-4B61K.otf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-IShootCoral.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-IShootCoral.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -17,7 +16,8 @@
 		6F4B19147B374D8682E72D45 /* Sabarian-OVPr6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5B6CECEBFFC4FB991AD665B /* Sabarian-OVPr6.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-IShootCoral-IShootCoralTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-IShootCoral-IShootCoralTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		DFFFCA2F92A7400798172038 /* Sabarian-EaYgW.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9EB3F6ACA4374862B216AED3 /* Sabarian-EaYgW.otf */; };
+		DB48FF8CA0C44B699556F2B6 /* Sabarian-EaYgW.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88E232903E094AF799E892EE /* Sabarian-EaYgW.ttf */; };
+		FBFD7DC214E64791B2865D41 /* Ressolles-4B61K.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 497D57D837D4474A8DAE73DF /* Ressolles-4B61K.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +43,13 @@
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-IShootCoral-IShootCoralTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IShootCoral-IShootCoralTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF9590F2977262C00C8E165 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-IShootCoral.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IShootCoral.debug.xcconfig"; path = "Target Support Files/Pods-IShootCoral/Pods-IShootCoral.debug.xcconfig"; sourceTree = "<group>"; };
+		497D57D837D4474A8DAE73DF /* Ressolles-4B61K.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ressolles-4B61K.ttf"; path = "../src/assets/fonts/Ressolles-4B61K.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-IShootCoral.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IShootCoral.release.xcconfig"; path = "Target Support Files/Pods-IShootCoral/Pods-IShootCoral.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-IShootCoral-IShootCoralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IShootCoral-IShootCoralTests.debug.xcconfig"; path = "Target Support Files/Pods-IShootCoral-IShootCoralTests/Pods-IShootCoral-IShootCoralTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-IShootCoral.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IShootCoral.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = IShootCoral/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		87E686EDA8364CD28FC38CF8 /* Ressolles-4B61K.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ressolles-4B61K.otf"; path = "../src/assets/fonts/Ressolles-4B61K.otf"; sourceTree = "<group>"; };
+		88E232903E094AF799E892EE /* Sabarian-EaYgW.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Sabarian-EaYgW.ttf"; path = "../src/assets/fonts/Sabarian-EaYgW.ttf"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-IShootCoral-IShootCoralTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IShootCoral-IShootCoralTests.release.xcconfig"; path = "Target Support Files/Pods-IShootCoral-IShootCoralTests/Pods-IShootCoral-IShootCoralTests.release.xcconfig"; sourceTree = "<group>"; };
-		9EB3F6ACA4374862B216AED3 /* Sabarian-EaYgW.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sabarian-EaYgW.otf"; path = "../src/assets/fonts/Sabarian-EaYgW.otf"; sourceTree = "<group>"; };
 		AFD45F4308FA4DE1A04A371C /* Ressolles-0W6oz.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ressolles-0W6oz.ttf"; path = "../src/assets/fonts/Ressolles-0W6oz.ttf"; sourceTree = "<group>"; };
 		D5B6CECEBFFC4FB991AD665B /* Sabarian-OVPr6.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sabarian-OVPr6.ttf"; path = "../src/assets/fonts/Sabarian-OVPr6.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -127,10 +127,10 @@
 		50F038522DE44817B2BC3662 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				87E686EDA8364CD28FC38CF8 /* Ressolles-4B61K.otf */,
-				9EB3F6ACA4374862B216AED3 /* Sabarian-EaYgW.otf */,
 				AFD45F4308FA4DE1A04A371C /* Ressolles-0W6oz.ttf */,
 				D5B6CECEBFFC4FB991AD665B /* Sabarian-OVPr6.ttf */,
+				497D57D837D4474A8DAE73DF /* Ressolles-4B61K.ttf */,
+				88E232903E094AF799E892EE /* Sabarian-EaYgW.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -274,10 +274,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				06021A225D34422C9D8B4D38 /* Ressolles-4B61K.otf in Resources */,
-				DFFFCA2F92A7400798172038 /* Sabarian-EaYgW.otf in Resources */,
 				467891817B394DBB9A1491BB /* Ressolles-0W6oz.ttf in Resources */,
 				6F4B19147B374D8682E72D45 /* Sabarian-OVPr6.ttf in Resources */,
+				FBFD7DC214E64791B2865D41 /* Ressolles-4B61K.ttf in Resources */,
+				DB48FF8CA0C44B699556F2B6 /* Sabarian-EaYgW.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

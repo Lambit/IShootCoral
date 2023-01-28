@@ -14,6 +14,7 @@ export default function Overlay() {
         position='absolute'
         w='100%'
         h='100%' 
+        zIndex={3}
         bg={color.overlay}
     />
   );

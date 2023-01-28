@@ -24,26 +24,25 @@ export default function BookScreen({navigation, route,}) {
       const formatSelected = formatDate(selectedDay);
       const baseDate = formatDate(TODAY);
       const [blockDate, setBlockDate] = useState([])
+      // console.log(formatSelected)
+
 
     const onDayPress = useCallback((date) => {
       // console.log(date)
       setSelectedDay(parseISO(date))
     return date;
-  }, []);
+  }, [selectedDay]);
 
   const chosenDate = () => {
     setBlockDate(formatSelected);
-    console.log(...blockDate)
+   
+    return blockDate
+    // console.log(...blockDate)
   };
 
-
+ console.log(blockDate)
   return (
     <View style={contain}>
-      <ImageHeader 
-        source={require('../assets/images/common/nem-header.jpg')} 
-        textColor={color.yellow}
-        text='Select a date' 
-      />
 {/* 
       <PageHeader text='Select a date' /> */}
 
@@ -58,9 +57,12 @@ export default function BookScreen({navigation, route,}) {
         // onDayPress={(res) => {setSelectedDay(format(new Date(res.year, res.month, res.day), res.dateString ))}}
         // Do not show days of other months in month page. Default = false
         hideExtraDays={true}
+        disableAllTouchEventsForDisabledDays={true}
+        // disabledDaysIndexes={[blockDate]}
+        enableSwipeMonths={true}
         markingType={'custom'}
         markedDates={{
-          [formatSelected]:{ 
+          [formatSelected]:{
             selected: true, 
             selectedColor: color.green,
               customStyles:{
@@ -73,9 +75,10 @@ export default function BookScreen({navigation, route,}) {
                 }
               }
           },
-          [blockDate]: {
+          [blockDate]: { 
             selected: true, 
             disabled: true, 
+            disableTouchEvent: true,
             marked: true,
             selectedColor: color.overlay,
               customStyles: {
@@ -99,9 +102,6 @@ export default function BookScreen({navigation, route,}) {
           textDayHeaderFontSize: 18,
           // day
           dayTextColor: color.aqua,
-          // textDayStyle:{ padding: 4, marginHorizontal:6},
-          // textDayFontFamily: fonts.head,
-          // textDayFontSize: 24,
           textDisabledColor: color.black,
           // today
           todayBackgroundColor: color.black,
@@ -119,7 +119,7 @@ export default function BookScreen({navigation, route,}) {
         }}
       />
 
-        <Text my='2' color={color.pink} fontFamily={fonts.head} fontSize='24' textAlign='center' >
+        <Text my='2' color={color.pink} fontSize='24' textAlign='center' >
           You have selected {formatSelected.slice(4).split('-')}. Please Confirm below.
         </Text>
 

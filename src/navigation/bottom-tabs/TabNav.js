@@ -6,7 +6,7 @@ import { useTheme, Text } from 'native-base';
 import { appTheme } from '../../theme/theme';
 
 // TabsScreens
-import HomeScreen from '../../screens/HomeScreen';
+import HomeScreen from '../../screens/home-screen/HomeScreen';
 import GalleryScreen from '../../screens/GalleryScreen';
 import BookScreen from '../../screens/BookScreen';
 import AboutScreen from '../../screens/AboutScreen';
@@ -59,7 +59,17 @@ const TabNav = () => {
   return (
     <Tab.Navigator 
       initialRouteName='Home'
-      screenOptions={tabNavOptions}
+      screenOptions={({ route }) => ({
+        tabBarStyle:  { backgroundColor: color.black, padding: 2 },
+        tabBarLabelStyle:  { marginBottom: 4 },
+        tabBarInactiveTintColor: color.white,
+        tabBarActiveTintColor: color.yellow,
+        // tabBarButton
+        headerShown: false
+       
+
+  
+      })}
     >
 
     <Tab.Screen name='Home' component={HomeScreen} t
@@ -67,30 +77,42 @@ const TabNav = () => {
           headerTitle: () => (<Text textAlign='center' fontSize='24' fontFamily={fonts.head} color={color.yellow} navigation={navigation} route={route} >I Shoot Coral</Text>),
           headerShown: true,
           headerStyle: { backgroundColor: color.black, },
+
+        tabBarIcon: ({color, size}) => (
+          <Feather name='home' color={color} size={22} />
+        )
       })} 
     />
     <Tab.Screen name="Gallery" component={GalleryScreen} 
-        // options={({ navigation, route }) => ({
-        //   tabBarIcon: ({color, size}) => (
-        //     <Feather name='user' color={color} size={22} navigation={navigation} route={route}/>
-        //   ),
+        options={({ navigation, route }) => ({
+    
+          tabBarIcon: ({color, size}) => (
+            <Feather name='camera' color={color} size={22} navigation={navigation} route={route}/>
+          ),
           
-        // })} 
+        })} 
      /> 
     <Tab.Screen name="Book" component={BookScreen} 
-        // options={({ navigation, route }) => ({
-        //   tabBarIcon: ({color, size}) => (
-        //     <Feather name='user' color={color} size={22} navigation={navigation} route={route}/>
-        //   ),
-          
-        // })} 
-     /> 
-    <Tab.Screen name="About" component={AboutScreen} 
-        options={({ navigation, route }) => ({
+      options={({ navigation, route }) => ({
           headerTitle: () => (<Text textAlign='center' fontSize='24' fontFamily={fonts.head} color={color.yellow} navigation={navigation} route={route} >I Shoot Coral</Text>),
           headerShown: true,
           headerStyle: { backgroundColor: color.black, },
-      })} 
+          tabBarIcon: ({color, size}) => (
+            <Feather name='meh' color={color} size={22} navigation={navigation} route={route}/>
+          ),
+          
+        })} 
+     /> 
+    <Tab.Screen name="About" component={AboutScreen} 
+      options={({ navigation, route }) => ({
+          headerTitle: () => (<Text textAlign='center' fontSize='24' fontFamily={fonts.head} color={color.yellow} navigation={navigation} route={route} >I Shoot Coral</Text>),
+          headerShown: true,
+          headerStyle: { backgroundColor: color.black, },
+          tabBarIcon: ({color, size}) => (
+            <Feather name='meh' color={color} size={22} navigation={navigation} route={route}/>
+          ),
+          
+        })} 
      /> 
 
   </Tab.Navigator>

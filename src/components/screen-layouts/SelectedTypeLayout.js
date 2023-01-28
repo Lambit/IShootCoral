@@ -11,51 +11,63 @@ import { useTheme, Pressable, Text, View , Image } from 'native-base';
     Props are passed to be used in current screen.
 */ 
 
-export default function SelectedTypeLayout({ id, imageSrc, typeStr, nameStr, onPress }) {
-     const { color, fonts, bR, glow } = useTheme();
+export default function SelectedTypeLayout({ 
+    viewH, viewW, pressH, pressW, id, imageSrc, typeStr, nameStr, onPress 
+}) {
+     const { color, fonts, bR, glow, droidGlow } = useTheme();
   return (
-    <Pressable 
-        key={id}
-        id={id}
+    <View 
+        flex={1}
+        h={viewH} 
+        w={viewW}
+        // h={(windowHeight / 2 / 2 - 30)} 
+        // w={windowWidth - 30}
         my='6'
         justifyContent='center'
         alignSelf='center'
+        shadow={oniOS ? glow : droidGlow}
+        borderRadius={bR.xl}
+    >
+    <Pressable 
+        key={id}
+        id={id}
+        h={pressH} 
+        w={pressW}
+        // height={(windowHeight / 2 / 2 - 40)} 
+        // w={windowWidth - 40}
+        alignSelf='center'
+        justifyContent='center'
         flexDirection='row'
-        shadow={glow}
-        // Platform specific--------------
-        android_ripple={{ color: color.overlay, }}
-        borderRadius={ oniOS ? bR.lg : 0}
         _pressed={{
-            opacity: oniOS ? .7 : 1,
-            
+            opacity: .7,  
         }}
         onPress={onPress}
-        borderWidth='.5'
-        borderColor={color.dPurple}
     >
         {/*---------------------------------------------------
           *  Image taking whole of the pressable container  *
         ----------------------------------------------------*/}
         <Image 
-            zIndex={-8}
             source={imageSrc}
+            h='100%'
+            w='100%'
             resizeMode='cover'
             alt={typeStr}
             alignSelf='center'
-            height={(windowHeight / 2 / 2 - 40)}
-            w={windowWidth - 40}
+            borderWidth='1'
+            borderColor={color.dPurple}
             borderRadius={bR.lg}
         />
         {/*--------------------------
           *  IShoot Coral's Logo  *
         --------------------------*/}
         <Image
-            maxH='60'
-            maxWidth='60'
+            maxH='50'
+            maxWidth='50'
             position='absolute'
             right={4}
+            top={2}
             alt='logo'
-            zIndex={0}
+            opacity={.4}
             source={require('../../assets/images/logo/ishoot-logo.png')}
         />
 
@@ -73,5 +85,6 @@ export default function SelectedTypeLayout({ id, imageSrc, typeStr, nameStr, onP
             </View>
                 
     </Pressable>
+    </View>
     );
 };

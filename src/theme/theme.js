@@ -1,3 +1,4 @@
+import { onAndroid, oniOS } from "../utilities/constants";
 import { extendTheme } from "native-base";
 
 export const appTheme = extendTheme({
@@ -15,8 +16,8 @@ export const appTheme = extendTheme({
         overlay: 'rgba(255,255,255, 0.2)',
     },
     fonts:{
-    head: 'Sabarian',
-    subHead: 'Ressolles',
+    head: oniOS ? 'Sabarian' : 'Sabarian-OVPr6',
+    subHead: oniOS ? 'Ressolles' : 'Ressolles-0W6oz',
   },
     letSpace: {
       sm: "-0.025em",
@@ -52,7 +53,8 @@ export const appTheme = extendTheme({
     sm: 8,
     md: 16,
     pill: 20,
-    lg: 40
+    lg: 40,
+    xl: 46,
   },
     contain:{
       flex: 1,
@@ -77,13 +79,23 @@ export const appTheme = extendTheme({
       elevation: 6,
     },
     glow: {
-      shadowOpacity: 0.4,
+      shadowOpacity: 0.6,
       shadowRadius: 8,
       shadowColor: '#f20079',
       shadowOffset: {
-        height: 4,
-        width: 0,
+        height: 8,
+        width: 4,
       },
-      // elevation: 6,
+      elevation: 16,
+    },
+    droidGlow: {
+      shadowColor: '#f20079',
+      // shadowOffset: {
+	    //   width: 0,
+	    //   height: 5,
+      // },
+      // shadowOpacity: 0.34,
+      // shadowRadius: 6.27,
+      elevation: 6,     
     },
 });

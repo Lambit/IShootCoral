@@ -3,16 +3,21 @@ import React from 'react'
 //Components & Constants
 import { windowHeight, windowWidth } from '../../utilities/constants';
 import Overlay from '../overlay/Overlay';
+import PageHeader from './PageHeader';
 
 //Packages
-import { useTheme, View, Image, Text } from 'native-base';
+import { View, Image } from 'native-base';
 
+/*----ImageHeader-------
+    Used on Selected Coral/Gallery screens. Display and image and heading text.
+*/
 
-
-const ImageHeader = ({source, textColor, text}) => {
-      const { fonts } = useTheme();
+const ImageHeader = ({source, textP, w, size}) => {
   return (
     <View width={windowWidth} height={windowHeight / 6}>
+      {/*-----------------------*
+        *   Image               *
+        *-----------------------*/}
       <Image 
         width='100%'
         height='100%'
@@ -21,31 +26,19 @@ const ImageHeader = ({source, textColor, text}) => {
         right={0}
         left={0}
         alt='nem'
-        zIndex={0}
         source={source}
       />
-      <Overlay />
-
-      <Text 
-        p='4' 
-        zIndex='2'
-        fontFamily={fonts.head} 
-        fontSize='42' 
-        color={textColor}
-    > 
-        {text}
-    </Text>
-
-      <Image
-          maxH='60'
-          maxWidth='60'
-          position='absolute'
-          right={0}
-          alt='logo'
-          zIndex={0}
-          source={require('../../assets/images/logo/ishoot-logo.png')}
-      />
-      
+        {/*-----------------------*
+          *   Overlay             *
+          *-----------------------*/}
+        <Overlay />
+        
+        {/*-----------------------*
+          *   Heading             *
+          *-----------------------*/}
+        <View position='absolute' w='100%' bottom='6'>
+          <PageHeader text={textP} w={w} size={size} />
+        </View>
     </View>
   );
 };

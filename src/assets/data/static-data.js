@@ -89,6 +89,7 @@ export const GALLERY = [
     new Gallery('924-g', require('../images/gallery/AOI-2p.jpeg'), ),
     new Gallery('925-g', require('../images/gallery/BB-6p.jpeg'), ),
     new Gallery('926-g', require('../images/gallery/Twizzlers.jpeg'), ),
+    new Gallery('927-g', require('../images/zoas/Orange-mandarin.jpeg'), ),
 ];
 
 

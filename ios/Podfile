@@ -28,8 +28,8 @@ target 'IShootCoral' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable the next line.
-  use_flipper!()
-  :flipper_configuration => FlipperConfiguration.enabled(["Debug"], { 'Flipper' => '0.162.0' }),
+  use_flipper!({ 'Flipper' => '0.162.0' })
+  # :flipper_configuration => FlipperConfiguration.enabled(["Debug"], { 'Flipper' => '0.162.0' }),
 
   post_install do |installer|
     react_native_post_install(installer)

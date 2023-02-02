@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 
 //Components & Constants
-import { windowWidth, windowHeight, oniOS } from '../utilities/constants';
+import { windowWidth, windowHeight } from '../utilities/constants';
 import SelectedTypeLayout from '../components/screen-layouts/SelectedTypeLayout';
+import LoadingScreen from './LoadingScreen';
 import { GALLERY } from '../assets/data/static-data';
 import ImageHeader from '../components/header/ImageHeader';
 
@@ -20,6 +21,7 @@ import { useTheme, FlatList } from 'native-base';
 
 function GalleryScreen({navigation, route,}) {
     const { color } = useTheme();
+    const [isLoading, setIsLoading] = useState(false);
 
     /*-------------------
      *   Render Item    *
@@ -56,11 +58,11 @@ function GalleryScreen({navigation, route,}) {
             
     };
 
-    //    if (isLoading) {
-    //     return (
-    //         <LoadingScreen />
-    //     );
-    // };
+    if (isLoading) {
+        return (
+            <LoadingScreen />
+        );
+    };
 
   return (
         <SafeAreaView style={{ flex: 1, backgroundColor: color.black, }}>

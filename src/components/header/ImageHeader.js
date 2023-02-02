@@ -3,7 +3,7 @@ import React from 'react'
 //Components & Constants
 import { windowHeight, windowWidth } from '../../utilities/constants';
 import Overlay from '../overlay/Overlay';
-import PageHeader from './PageHeader';
+import { PageHeader }from './Headings';
 
 //Packages
 import { View, Image } from 'native-base';

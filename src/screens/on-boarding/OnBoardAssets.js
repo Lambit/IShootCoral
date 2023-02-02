@@ -92,3 +92,28 @@ export const HorsZoa = () => {
   );
 };
 
+{/*-----------------------
+  *  Zoa Image           *
+-------------------------*/}
+export const PBFish = () => {
+  return (
+    <View 
+        w={windowWidth}
+        h={windowHeight / 2 - 20}
+        position='absolute' 
+        top='200' 
+    >
+        <Svg height='90%' width='90%'>
+            <G rotation="40" origin="280, 60">
+                <Image 
+                  href={require('../../assets/images/fish/p-b-fish.png')}
+                  height='100%'
+                  width='100%'
+                  x='-50'
+                />
+           </G>
+        </Svg>
+    </View>
+  );
+};
+

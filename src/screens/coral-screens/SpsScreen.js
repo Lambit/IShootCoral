@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 
 //Components & Constants
@@ -6,9 +6,8 @@ import { windowHeight, windowWidth } from '../../utilities/constants';
 import SelectedTypeLayout from '../../components/screen-layouts/SelectedTypeLayout';
 import ImageHeader from '../../components/header/ImageHeader';
 
-
 // Packages
-import { FlatList, useTheme, Image } from 'native-base';
+import { FlatList, useTheme } from 'native-base';
 import { SPS } from '../../assets/data/static-data';
 
 /*----SpsScreen-------
@@ -21,12 +20,12 @@ import { SPS } from '../../assets/data/static-data';
 
 function SpsScreen({navigation, route,}) {
     const { color } = useTheme();
+    const [isLoading, setIsLoading] = useState(false);
 
     /*-------------------
      *   Render Item    *
     --------------------*/
     function renderItem({ item: coral }) {
-
         /*-------------------
          *  Nav Function    *
         --------------------*/  
@@ -59,11 +58,11 @@ function SpsScreen({navigation, route,}) {
             
     };
 
-    //    if (isLoading) {
-    //     return (
-    //         <LoadingScreen />
-    //     );
-    // };
+    if (isLoading) {
+        return (
+            <LoadingScreen />
+        );
+    };
 
   return (
         <SafeAreaView style={{ flex: 1, backgroundColor: color.black, }}>
@@ -78,12 +77,13 @@ function SpsScreen({navigation, route,}) {
                 renderItem={renderItem}
                 keyExtractor={(coral, indx) => `${coral.id}-${indx}`}
                 ListHeaderComponent={
+
                     <ImageHeader 
                         source={require('../../assets/images/common/SPS-top-down-2.jpeg')}
                         textP='SPS'
                         size='md'
                         w='120'
-                     /> 
+                    /> 
                 }       
             />
 

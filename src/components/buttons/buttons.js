@@ -1,56 +1,60 @@
 import React from 'react'
 
 //Packages
-import { useTheme, Button, Pressable } from 'native-base';
+import { useTheme, Button, Pressable , Text, View } from 'native-base';
+import Animated, { useSharedValue, useAnimatedStyle, withSequence, withRepeat, withTiming, withSpring } from 'react-native-reanimated';
 import Feather from 'react-native-vector-icons/Feather';
-
 
 /*---------------------------------
  *   Loading Button               *
 ----------------------------------*/ 
-export const LoadingButton = ({ 
-    //loading state/activity
-    isLoading, isDisabled, _spinner, onPress, onPressIn, 
-    //style/text displayed
-    m, mx, my, mb, pb, py, px, w, text 
-    }) => {
-     const { color, weights, bR } = useTheme();
+export const LoadingButton = ({ isLoading, isDisabled, _spinner, onPress, mx, my, py, px, text }) => {
+    const { color, weights, bR } = useTheme();
+    const buttonScaled = useSharedValue(1);
+
+    const animatedStyle = useAnimatedStyle(() => {
+        return {
+        transform: [{ scale: buttonScaled.value }]
+        };
+    });
+
+    const animatedPress = () => {
+        buttonScaled.value = withSequence(withSpring(.9), withSpring(1))
+    };
+
     return (
-        <Button
-            isLoading={isLoading}
-            isDisabled={isDisabled}
-            _spinner={_spinner}
-            onPress={onPress}
-            onPressIn={onPressIn}
-            m={m}
-            mx={mx}
-            my={my}
-            mb={mb}
-            pb={pb}
-            py={py}
-            px={px}
-            w={w}
-            size='lg'
-            bg={color.dPurple}
-            borderRadius={bR.pill}
-            shadow={8}
-            spinnerPlacement='end'
-            isLoadingText='Loading'
-            _pressed={{
-                bg: color.pink,
-                opacity: .5
-            }}
-            _loading={{
-                bg: color.red,
-                opacity: .9,
-            }}
-            _text={{
-                fontSize: 'lg',
-                fontWeight: weights.lg,
-            }}
-        >
-            {text}
-        </Button>
+        <Animated.View style={[animatedStyle]} >
+            <Button
+                isLoading={isLoading}
+                isDisabled={isDisabled}
+                _spinner={_spinner}
+                onPress={onPress}
+                mx={mx}
+                my={my}
+                py={py}
+                px={px}
+                size='lg'
+                bg={color.dPurple}
+                borderRadius={bR.pill}
+                spinnerPlacement='end'
+                isLoadingText='Loading'
+                onPressIn={() => { animatedPress() }}
+                _pressed={{
+                    bg: color.pink,
+                    opacity: .5
+                }}
+                _loading={{
+                    bg: color.red,
+                    opacity: .9,
+                }}
+                _text={{
+                    fontSize: 'lg',
+                    fontWeight: weights.lg,
+                }}
+            >
+                {text}
+            </Button>
+        </Animated.View>
     );
 };
 
@@ -90,5 +94,38 @@ export const CircleButton = ({
             <Feather name={icon} size={size} color={color} />
 
         </Pressable>
+    );
+};
+
+
+/*---------------------------------*
+ *   Email Me Button               *
+ ----------------------------------*/ 
+export const EmailMeButton = ({ onPress }) => {
+    const { color, fonts, bR, glow } = useTheme();
+    return (
+        <Pressable 
+            mt='4' 
+            p='2' 
+            borderRadius={bR.pill}  
+            onPress={onPress}
+            _pressed={{ 
+              opacity: .5,
+              backgroundColor: color.overlay,
+              borderColor: color.yellow,
+              borderWidth: 1
+            }}
+        >
+            <View  p='2' shadow={glow}>
+                <Text  
+                  color={color.aqua} 
+                  fontFamily={fonts.head} 
+                  fontSize='36' 
+                  textAlign='center' 
+                >
+                    Email Me!
+                </Text>
+            </View>
+        </Pressable> 
     );
 };

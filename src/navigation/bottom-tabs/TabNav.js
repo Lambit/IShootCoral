@@ -8,8 +8,8 @@ import { appTheme } from '../../theme/theme';
 // TabsScreens
 import HomeScreen from '../../screens/home-screen/HomeScreen';
 import GalleryScreen from '../../screens/GalleryScreen';
-import BookScreen from '../../screens/BookScreen';
-import AboutScreen from '../../screens/AboutScreen';
+import BookScreen from '../../screens/booking/BookScreen';
+import AboutScreen from '../../screens/about-screen/AboutScreen';
 
 // Icons
 import Feather from 'react-native-vector-icons/Feather'
@@ -94,20 +94,14 @@ const TabNav = () => {
      /> 
     <Tab.Screen name="Book" component={BookScreen} 
       options={({ navigation, route }) => ({
-          headerTitle: () => (<Text textAlign='center' fontSize='24' fontFamily={fonts.head} color={color.yellow} navigation={navigation} route={route} >I Shoot Coral</Text>),
-          headerShown: true,
-          headerStyle: { backgroundColor: color.black, },
           tabBarIcon: ({color, size}) => (
-            <Feather name='meh' color={color} size={22} navigation={navigation} route={route}/>
+            <Feather name='calendar' color={color} size={22} navigation={navigation} route={route}/>
           ),
           
         })} 
      /> 
     <Tab.Screen name="About" component={AboutScreen} 
       options={({ navigation, route }) => ({
-          headerTitle: () => (<Text textAlign='center' fontSize='24' fontFamily={fonts.head} color={color.yellow} navigation={navigation} route={route} >I Shoot Coral</Text>),
-          headerShown: true,
-          headerStyle: { backgroundColor: color.black, },
           tabBarIcon: ({color, size}) => (
             <Feather name='meh' color={color} size={22} navigation={navigation} route={route}/>
           ),

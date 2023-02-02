@@ -1,13 +1,12 @@
 import React from 'react';
 
 //Components & Constants
-import { windowHeight, windowWidth } from '../../utilities/constants';
 import { LoadingButton } from '../../components/buttons/buttons';
-import { GogglesOnBoard, MalOnBoard, HorsZoa, } from './SvgLayouts';
+import { GogglesOnBoard, MalOnBoard, HorsZoa, } from './OnBoardAssets';
 
 //Packages
-import { HStack, useTheme, Text, VStack, View, Box } from 'native-base';
-import Animated, { FadeInLeft, FadeInRight, SlideInUp, withSpring, withTiming, withSequence } from 'react-native-reanimated';
+import { useTheme, Text, VStack } from 'native-base';
+import Animated, { FadeInLeft, FadeInRight, SlideInUp } from 'react-native-reanimated';
 
 
 /*----OnBoardingScreen-------
@@ -46,7 +45,7 @@ const OnBoardingScreen = ({ navigation, route,}) => {
               <Text p='4' fontFamily={fonts.head} fontSize='42' color={color.yellow}> 
                 I Shoot Coral
               </Text>
-               <LoadingButton w='100%' onPress={toHome} text='Okay!'/>
+               <LoadingButton px='20' py='4' onPress={toHome} text='Okay!'/>
             </VStack>
 
               {/*-------------------
@@ -58,7 +57,10 @@ const OnBoardingScreen = ({ navigation, route,}) => {
               {/*-------------------
                 *  Goggles Logo   *
               --------------------*/}
-              <Animated.View entering={FadeInLeft.delay(1000)}>
+              <Animated.View 
+                style={{zIndex: -1}}
+                entering={FadeInLeft.delay(1000)}
+              >
                 <GogglesOnBoard />
               </Animated.View>
     </Animated.View>

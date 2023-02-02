@@ -16,6 +16,10 @@
     {
       "path": "src/assets/fonts/Sabarian-OVPr6.ttf",
       "sha1": "ff5d620f826b85d94c65f0f69ac1e4472d230b4c"
+    },
+    {
+      "path": "src/assets/fonts/Time-Font.ttf",
+      "sha1": "5f971a7241b7222af86eaf73a233bb3905e798c5"
     }
   ]
 }

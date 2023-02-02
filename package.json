@@ -18,6 +18,7 @@
     "date-fns": "^2.29.3",
     "native-base": "^3.4.25",
     "react": "17.0.2",
+    "react-hook-form": "^7.42.1",
     "react-native": "0.68.5",
     "react-native-calendars": "^1.1293.0",
     "react-native-flipper": "^0.177.0",

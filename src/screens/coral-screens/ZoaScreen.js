@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 
 //Components & Constants
 import { windowHeight, windowWidth } from '../../utilities/constants';
 import SelectedTypeLayout from '../../components/screen-layouts/SelectedTypeLayout';
 import ImageHeader from '../../components/header/ImageHeader';
+import LoadingScreen from '../LoadingScreen';
 
 // Packages
 import { FlatList, useTheme } from 'native-base';
@@ -20,6 +21,7 @@ import { ZOA } from '../../assets/data/static-data';
 
 const ZoaScreen = ({ navigation, route }) => {
     const { color } = useTheme();
+    const [isLoading, setIsLoading] = useState(false);
 
     /*-------------------
      *   Render Item    *
@@ -58,11 +60,11 @@ const ZoaScreen = ({ navigation, route }) => {
             
     };
 
-    //    if (isLoading) {
-    //     return (
-    //         <LoadingScreen />
-    //     );
-    // };
+    if (isLoading) {
+        return (
+            <LoadingScreen />
+        );
+    };
 
   return (
         <SafeAreaView style={{ flex: 1, backgroundColor: color.black, }}>

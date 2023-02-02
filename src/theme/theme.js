@@ -18,6 +18,7 @@ export const appTheme = extendTheme({
     fonts:{
     head: oniOS ? 'Sabarian' : 'Sabarian-OVPr6',
     subHead: oniOS ? 'Ressolles' : 'Ressolles-0W6oz',
+    num: onAndroid ? 'Time-Font' : 'E1234',
   },
     letSpace: {
       sm: "-0.025em",
@@ -26,7 +27,7 @@ export const appTheme = extendTheme({
       xl: "0.05em",
   },
   lineHi: {
-      xs: "1.125em",
+      xs: 1.125,
       sm: "1.25em",
       md: "1.375em",
       lg: "1.5em",
@@ -68,16 +69,6 @@ export const appTheme = extendTheme({
       left: 0,
       bottom: 0,
     },
-    shadowAndroid: {
-      shadowOpacity: 0.2,
-      shadowRadius: 2,
-      shadowColor: 'black',
-      shadowOffset: {
-        height: 4,
-        width: 4,
-      },
-      elevation: 6,
-    },
     glow: {
       shadowOpacity: 0.6,
       shadowRadius: 8,
@@ -90,12 +81,33 @@ export const appTheme = extendTheme({
     },
     droidGlow: {
       shadowColor: '#f20079',
-      // shadowOffset: {
-	    //   width: 0,
-	    //   height: 5,
-      // },
-      // shadowOpacity: 0.34,
-      // shadowRadius: 6.27,
       elevation: 6,     
     },
+    
+    calenderTheme: {
+    calendarBackground: '#511281',
+    // head
+    arrowColor: '#67e8f9',
+    monthTextColor: '#FFFF00',
+    textMonthFontFamily: oniOS ? 'Sabarian' : 'Sabarian-OVPr6',
+    textMonthFontSize: 24,
+    // day-header
+    textSectionTitleColor: '#f20079',
+    textDayHeaderFontFamily: oniOS ? 'Ressolles' : 'Ressolles-0W6oz',
+    textDayHeaderFontSize: 18,
+    // day
+    dayTextColor: '#39ff14',
+    textDayFontFamily: onAndroid ? 'Time-Font' : 'E1234',
+    textDisabledColor: '#000',
+    // today
+    todayBackgroundColor: '#000',
+    todayTextColor: '#FFFF00',
+    // selectedDay
+    selectedDayBackgroundColor: '#FFFF00',
+    selectedDayTextColor: '#f20079',
+    dotColor: '#39ff14',
+    selectedDotColor: '#FFFFFF',
+    disabledDotColor: '#FF5733',
+    }
 });
+

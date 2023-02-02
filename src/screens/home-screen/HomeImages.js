@@ -6,7 +6,6 @@ import { windowHeight, windowWidth } from '../../utilities/constants';
 // Packages
 import { View, Image } from 'native-base';
 
-
 {/*--------------------
   *  InkSplat Image   *
 ----------------------*/}
@@ -35,16 +34,18 @@ export const InkSplat = () => {
   *  RainbowFish Image   *
 -------------------------*/}
 export const RainbowFish = () => {
+
   return (
     <View 
-      pt='6'
+      pt='10'
       flexDirection='column-reverse'
       position='absolute' 
-      bottom='0'
-      w='90%' 
+      bottom='-20'
+      w='100%' 
       h='100%'
       zIndex='-1'
     >
+      
       <Image 
         zIndex={2}
         source={require('../../assets/images/logo/rainbow-fish.png')} 

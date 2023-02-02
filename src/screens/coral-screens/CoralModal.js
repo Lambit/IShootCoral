@@ -1,5 +1,4 @@
-import React from 'react';
-import { Image } from 'react-native';
+import React, { useState } from 'react';
 
 //Components & Constants
 import { windowHeight, windowWidth } from '../../utilities/constants';
@@ -8,7 +7,7 @@ import Animated, { useSharedValue, useAnimatedStyle } from 'react-native-reanima
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
 //Packages
-import { useTheme, View, VStack } from 'native-base';
+import { useTheme, Pressable } from 'native-base';
 
 /*----CoralModal-------
     Screen to view the corals full size Image, displayed as a transparent modal.
@@ -18,92 +17,118 @@ import { useTheme, View, VStack } from 'native-base';
 
 const CoralModal = ({navigation, route,}) => {
     //---theme and params, to display specific coral selected------
-    const { color, bR } = useTheme();
+    const { color, bR, fill } = useTheme();
     const { coralArr, coralId, coralName, coralImg } = route.params;
-   const scale = useSharedValue(1);
-  const savedScale = useSharedValue(1);
-
-const pinchGesture = Gesture.Pinch()
-  .onUpdate((e) => {
-    scale.value = savedScale.value * e.scale;
-  })
-  .onEnd(() => {
-    savedScale.value = scale.value;
-  });
-
-const animatedStyle = useAnimatedStyle(() => ({
-  transform: [{ scale: scale.value }],
-}));
-
+    const [isLoading, setIsLoading] = useState(false);
+    
     //----go back on button press-----
     const goBackBtn = () => {
         navigation.goBack();
     };
 
+    const offset = useSharedValue({ x: 0, y: 0 });
+    const start = useSharedValue({ x: 0, y: 0 });
+    const scale = useSharedValue(1);
+    const savedScale = useSharedValue(1);
+
+    const animatedStyles = useAnimatedStyle(() => {
+      return {
+        transform: [
+          { translateX: offset.value.x },
+          { translateY: offset.value.y },
+          { scale: scale.value },
+        ],
+      };
+    });
+
+  const dragGesture = Gesture.Pan()
+  .averageTouches(true)
+  .onUpdate((e) => {
+    offset.value = {
+      x: e.translationX + start.value.x,
+      y: e.translationY + start.value.y,
+      
+    };
+     console.log(e, 'drag')
+  })
+  .onEnd(() => {
+    start.value = {
+      x: offset.value.x,
+      y: offset.value.y,
+    };
+  });
+
+
+  const zoomGesture = Gesture.Pinch()
+  .onUpdate((event) => {
+    scale.value = savedScale.value * event.scale;
+     console.log(event, 'pinch')
+  })
+  .onEnd(() => {
+    savedScale.value = scale.value;
+  });
+
+
+  const composed = Gesture.Simultaneous(
+    dragGesture,
+    Gesture.Simultaneous(zoomGesture)
+  );
+
   return (
     /* -----------------------------------------------
      *   View set to dynamically fit screen types.   *
     ------------------------------------------------ */
-    <GestureDetector gesture={pinchGesture}>
     <Animated.View 
-        flex={1} 
-        p='2' 
-        w={windowWidth}
-        h={windowHeight}
-        justifyContent='center' 
-        alignItems='center' 
-        bg={color.overlay}
-        style={{ animatedStyle}}
+        style={{ 
+          flex: 1, 
+          padding: 2, 
+          width: windowWidth, 
+          height: windowHeight, 
+          justifyContent: 'center', 
+          alignItems:'center',
+          bg:color.overlay}
+     
+        }
     >
-      
-        <VStack flex={1} w='100%' h='80%'>
-            {/*------------------------
-              * Close/goBack button   *
-            --------------------------*/}
-            <CircleButton 
-              zIndex={1}
-              position='absolute'
-              top={12}
-              ml='6'
-              icon='x' 
-              size={22} 
-              bg={color.pink} 
-              color={color.aqua} 
-              borderColor={color.dPurple} 
-              onPress={goBackBtn}
-            />
-            {/*-----------------------------------------------
-              * Image dynamically displayed to fit parent.  *
-            ------------------------------------------------*/}
-            
-            <Image 
+      <Pressable flex={1} style={fill}bg={color.overlay} onPress={goBackBtn}>
+        {/*------------------------
+          * Close/goBack button   *
+        --------------------------*/}
+        <CircleButton 
+          zIndex={1}
+          position='absolute'
+          top={16}
+          ml='10'
+          icon='x' 
+          size={22} 
+          bg={color.pink} 
+          color={color.aqua} 
+          borderColor={color.dPurple} 
+          onPress={goBackBtn}
+        />
+          {/*-----------------------------------------------
+            * Image dynamically displayed to fit parent.  *
+          ------------------------------------------------*/}
+          <GestureDetector gesture={composed}>
+            <Animated.Image 
               id={coralId}
               source={coralImg}
               alt={ coralName || coralId }
-              resizeMode='cover'
-              alignSelf='center'
-              position='absolute'
-              bottom={10} 
-              top={10}
-              height={windowHeight - 100}
-              w={windowWidth - 40}
-              borderRadius={bR.lg}
-              // style={[{ 
-              //   resizeMode: 'cover',
-              //   alignSelf: 'center',
-              //   position: 'absolute', 
-              //   bottom: 10,
-              //   top: 10,
-              //   height: windowHeight - 100,
-              //   width: windowWidth - 40,
-              //   borderRadius: bR.lg, 
-              //   }, animatedStyle]}
+              style={[{ 
+                resizeMode: 'contain',
+                justifyContent:'center',
+                alignSelf: 'center',
+                position: 'absolute', 
+                bottom: 10,
+                top: 40,
+                height: windowHeight - 100,
+                width: windowWidth - 40,
+                borderRadius: bR.lg, 
+                }, animatedStyles]}
             />
-            
-          
-        </VStack>
+          </GestureDetector>  
+       </Pressable>
     </Animated.View>
-    </GestureDetector>
   );
 };
 

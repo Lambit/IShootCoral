@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
-
+import { appTheme } from '../../theme/theme';
+ 
 //Packages
-import { useTheme, Pressable, Text, View , Image } from 'native-base';
+import { Pressable, Text, View , Image } from 'native-base';
 import Animated, { useSharedValue, useAnimatedStyle, withSequence, withTiming, withSpring } from 'react-native-reanimated';
 
 /*---SelectedTypeLayout-----
@@ -11,28 +12,24 @@ import Animated, { useSharedValue, useAnimatedStyle, withSequence, withTiming, w
 */ 
 
 const SelectedTypeLayout = ({viewH, viewW, pressH, pressW, id, imageSrc, typeStr, nameStr, onPress}) => {
-     const { color, fonts, bR } = useTheme();
+     const { color, fonts, bR } = appTheme;
      const buttonScaled = useSharedValue(1);
 
      const animatedStyle = useAnimatedStyle(() => {
          return {
-         transform: [{ scale: buttonScaled.value },
-        //  {   shadowColor: buttonScaled.value ? '#f20079' : '#000',}
-         ]
+            transform: [{ scale: buttonScaled.value }]
          };
      });
  
      const animatedPress = () => {
          buttonScaled.value = withSequence(
-             withTiming(1),
-             withSpring(.9),
-              withTiming(.9), 
-              withSpring(1)
+              withTiming(.8), 
+              withSpring(.9),
+              withTiming(1)
          );
      };
 
-
-  return (
+    return (
         <Animated.View 
             style={[{ 
                 flex: 1, 
@@ -66,7 +63,7 @@ const SelectedTypeLayout = ({viewH, viewW, pressH, pressW, id, imageSrc, typeStr
                     opacity: .7,  
                 }}
                 onPress={onPress}
-                 onPressIn={() => { animatedPress() }}
+                onPressIn={() => { animatedPress() }}
             >
             {/*---------------------------------------------------
               *  Image taking whole of the pressable container  *
@@ -92,7 +89,7 @@ const SelectedTypeLayout = ({viewH, viewW, pressH, pressW, id, imageSrc, typeStr
                 right={4}
                 top={2}
                 alt='logo'
-                opacity={.4}
+                opacity={.6}
                 source={require('../../assets/images/logo/ishoot-logo.png')}
             />
 
@@ -115,3 +112,5 @@ const SelectedTypeLayout = ({viewH, viewW, pressH, pressW, id, imageSrc, typeStr
 };
 
 export default memo(SelectedTypeLayout);
+
+

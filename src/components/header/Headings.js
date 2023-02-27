@@ -1,14 +1,15 @@
 import React from 'react';
+import { appTheme } from '../../theme/theme';
 
 //Packages
-import { useTheme, Text, Image, VStack } from 'native-base';
+import { Text, Image, VStack } from 'native-base';
 
 /*---PageHeader-----
     Header Text and styles to app screens, text is a prop passed down to display
     the current screens name.
 */ 
 export const PageHeader = ({ text, size, w }) => {
-    const { color, fonts } = useTheme();
+    const { color, fonts } = appTheme;
     return (
         <VStack w='100%' >
             <Text 
@@ -34,7 +35,7 @@ export const PageHeader = ({ text, size, w }) => {
 
 
 export const SubHeadTitle = ({ text, size, w }) => {
-    const { color, fonts } = useTheme();
+    const { color, fonts } = appTheme;
     return (
         <VStack w='100%' >
             <Text 

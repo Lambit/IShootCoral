@@ -69,6 +69,16 @@ export const appTheme = extendTheme({
       left: 0,
       bottom: 0,
     },
+    loadingGlow: {
+      shadowOpacity: 1,
+      shadowRadius: 20,
+      shadowColor: '#f20079',
+      shadowOffset: {
+        height: 0,
+        width: 0,
+      },
+      elevation: 16,
+    },
     glow: {
       shadowOpacity: 0.6,
       shadowRadius: 8,
@@ -110,4 +120,5 @@ export const appTheme = extendTheme({
     disabledDotColor: '#FF5733',
     }
 });
+
 

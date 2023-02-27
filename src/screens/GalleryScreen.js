@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
+import { appTheme } from '../theme/theme';
 
 //Components & Constants
 import { windowWidth, windowHeight } from '../utilities/constants';
@@ -9,7 +10,7 @@ import { GALLERY } from '../assets/data/static-data';
 import ImageHeader from '../components/header/ImageHeader';
 
 //Packages
-import { useTheme, FlatList } from 'native-base';
+import { FlatList } from 'native-base';
 
 /*----GalleryScreen-------
     GalleryScreen houses the flat list being displayed with imported data. A function
@@ -20,7 +21,7 @@ import { useTheme, FlatList } from 'native-base';
 */ 
 
 function GalleryScreen({navigation, route,}) {
-    const { color } = useTheme();
+    const { color } = appTheme;
     const [isLoading, setIsLoading] = useState(false);
 
     /*-------------------

@@ -1,15 +1,16 @@
 import React from 'react';
+import { appTheme } from '../../theme/theme';
 
 //Packages
 import { Controller } from "react-hook-form";
-import { useTheme, Input, Text, FormControl, } from 'native-base';
+import { Input, Text, FormControl, } from 'native-base';
 
 /*-----PhoneInput-----
   Phone Input for calender screen with props, and form control.
 */ 
 
 export const PhoneInput = ({ text, name, control, rules = {}, onFocus, borderColor }) => {
-    const { color, bR, lineHi } = useTheme();
+    const { color, bR, lineHi } = appTheme;
     return(
         /*-------------------
          *   Controller    *
@@ -74,15 +75,6 @@ export const PhoneInput = ({ text, name, control, rules = {}, onFocus, borderCol
                         Enter phone number to confirm and reserve date. You will receive a text shortly after. 
                       </Text>
                     }
-                    {/* { error && 
-                      <Text style={{ 
-                        fontWeight: 'bold', fontSize: 12, color: color.red, alignSelf: 'stretch',
-                        }}
-                      > 
-                        {error.message || error.pattern || 'Error' } 
-                      </Text>
-                    } */}
-
                 </>
 
             )}

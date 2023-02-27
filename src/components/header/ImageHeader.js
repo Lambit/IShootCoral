@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 //Components & Constants
 import { windowHeight, windowWidth } from '../../utilities/constants';
@@ -12,7 +12,7 @@ import { View, Image } from 'native-base';
     Used on Selected Coral/Gallery screens. Display and image and heading text.
 */
 
-const ImageHeader = ({source, textP, w, size}) => {
+const ImageHeader = ({ source, textP, w, size }) => {
   return (
     <View width={windowWidth} height={windowHeight / 6}>
       {/*-----------------------*

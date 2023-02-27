@@ -1,12 +1,12 @@
 import React from 'react';
 
 //Components & Constants
-import { windowHeight, windowWidth, onAndroid } from '../../utilities/constants';
+import { windowHeight, windowWidth } from '../../utilities/constants';
 
 //Packages
-import { useTheme, View, Box, Text } from 'native-base';
+import { View, Box, Text } from 'native-base';
 import Svg, { Image, G, } from 'react-native-svg';
-import Animated, { LightSpeedInRight, useAnimatedStyle, withSequence, withRepeat, withTiming } from 'react-native-reanimated';
+import { appTheme } from '../../theme/theme';
 
 {/*----------------------*
   *  Coral Logo          *
@@ -14,10 +14,10 @@ import Animated, { LightSpeedInRight, useAnimatedStyle, withSequence, withRepeat
 export const CoralLogo = () => {
   return (
     <Box 
-      size={windowWidth - 20}
+      size={windowWidth - 80}
       position='absolute' 
-      bottom={-60} 
-      left={-100}  
+      bottom={20} 
+      left={-120}  
       opacity={.4}
     >
       <Svg height='90%' width='90%'>
@@ -40,14 +40,14 @@ export const GogglesLogo = () => {
   return (
     <View 
         w={windowWidth}
-        h={ windowHeight - 200}
+        h={ windowHeight - 100}
         position='absolute' 
-        bottom={0} 
-        left={60}
+        top={0} 
+        left={100}
         right={0} 
         opacity='.4'
     >
-        <Svg height='90%' width='90%'>
+        <Svg height='80%' width='80%'>
           <G rotation="28" origin="220, 0" >
             <Image 
               href={require('../../assets/images/logo/mask-ink.png')}
@@ -93,7 +93,7 @@ export const  RainbowFish  = () => {
   *  Intro Text          *
   *----------------------*/}
 export const  IntroText  = () => {
-  const { color, fonts } = useTheme();
+  const { color, fonts } = appTheme;
   return (
     <View mt='6'>
       <Text my='2' color={color.green} fontFamily={fonts.subHead} fontSize='20' textAlign='center' >
@@ -109,7 +109,7 @@ export const  IntroText  = () => {
   *  Photo Text          *
   *----------------------*/}
 export const  PhotoText  = () => {
-  const { color, fonts } = useTheme();
+  const { color, fonts } = appTheme;
   return (
     <View mt='6'>
       <Text my='2' color={color.green} fontFamily={fonts.subHead} fontSize='20' textAlign='center' >
@@ -126,7 +126,7 @@ export const  PhotoText  = () => {
   *  Contact Text        *
   *----------------------*/}
 export const  ContactText  = () => {
-  const { color, fonts } = useTheme();
+  const { color, fonts } = appTheme;
   return (
     <Text m='2' color={color.green} fontFamily={fonts.subHead} fontSize='20' textAlign='center' >
       Book a shoot through the scheduling screen in the app. Feel free to reach out on ReefTwoReef

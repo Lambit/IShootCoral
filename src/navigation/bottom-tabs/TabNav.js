@@ -2,8 +2,7 @@ import React from 'react'
 import { StatusBar, SafeAreaView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { onAndroid, oniOS, windowWidth } from '../../utilities/constants';
-import { useTheme, Text } from 'native-base';
-import { appTheme } from '../../theme/theme';
+import { Text } from 'native-base';
 
 // TabsScreens
 import HomeScreen from '../../screens/home-screen/HomeScreen';
@@ -13,6 +12,7 @@ import AboutScreen from '../../screens/about-screen/AboutScreen';
 
 // Icons
 import Feather from 'react-native-vector-icons/Feather'
+import { appTheme } from '../../theme/theme';
 
 
 
@@ -27,33 +27,26 @@ const TAB_ICON = {
 };
 
 
-const tabNavOptions = ({ route, color }) => {
-  const iconName = TAB_ICON[route.name];
-  return {
-    tabBarIcon: (color) => (
-      <Feather name={iconName} color={'white'} size={20}/>
-    ),
-    headerShown: false,
- 
-  tabBarStyle:  { backgroundColor: 'black', padding: 2 },
-        tabBarLabelStyle:  { marginBottom: 4 },
-        tabBarInactiveTintColor: 'white',
-        tabBarActiveTintColor: 'yellow',
-  };
-};
-// const headerOptions = ({ navigation, route }) => {
+// const tabNavOptions = ({ route, color }) => {
+//   const iconName = TAB_ICON[route.name];
+//   const { color, fonts } = useTheme();
 //   return {
-//     headerShown: true,
-//     headerTitle: () => <Text style={{ color: eatsTheme.black, textAlign: 'center' }} >{route.name}</Text>,
-//     headerStyle: { borderBottomColor: eatsTheme.primeGrey, borderBottomWidth: .2, },
-//     headerTintColor: eatsTheme.black,
-//   }
+//     tabBarIcon: (color) => (
+//       <Feather name={iconName} color={'white'} size={20}/>
+//     ),
+//     headerShown: false,
+ 
+//   tabBarStyle:  { backgroundColor: 'black', padding: 2 },
+//         tabBarLabelStyle:  { marginBottom: 4 },
+//         tabBarInactiveTintColor: 'white',
+//         tabBarActiveTintColor: 'yellow',
+//   };
 // };
 
-// onAndroid ? StatusBar.currentHeight : 0
+
 
 const TabNav = () => {
-         const { color, container, fonts, letSpace, screens, bR, shadowAndroid } = useTheme();
+         const { color, container, fonts, letSpace, screens, bR, shadowAndroid } = appTheme;
 
 
   return (
@@ -64,11 +57,7 @@ const TabNav = () => {
         tabBarLabelStyle:  { marginBottom: 4 },
         tabBarInactiveTintColor: color.white,
         tabBarActiveTintColor: color.yellow,
-        // tabBarButton
         headerShown: false
-       
-
-  
       })}
     >
 

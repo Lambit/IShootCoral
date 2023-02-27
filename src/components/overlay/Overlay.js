@@ -1,4 +1,5 @@
 import React from 'react';
+import { appTheme } from '../../theme/theme';
 
 //Packages
 import { useTheme, View } from 'native-base';
@@ -8,7 +9,7 @@ import { useTheme, View } from 'native-base';
 ----*/ 
 
 export default function Overlay() {
-    const { color } = useTheme();
+    const { color } = appTheme;
   return (
     <View
         position='absolute'

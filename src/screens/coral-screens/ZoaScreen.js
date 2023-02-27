@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { appTheme } from '../../theme/theme';
 import { SafeAreaView } from 'react-native';
 
 //Components & Constants
@@ -20,7 +21,7 @@ import { ZOA } from '../../assets/data/static-data';
 */ 
 
 const ZoaScreen = ({ navigation, route }) => {
-    const { color } = useTheme();
+    const { color } = appTheme;
     const [isLoading, setIsLoading] = useState(false);
 
     /*-------------------

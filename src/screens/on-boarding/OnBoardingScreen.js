@@ -1,11 +1,12 @@
 import React from 'react';
+import { appTheme } from '../../theme/theme';
 
 //Components & Constants
 import { LoadingButton } from '../../components/buttons/buttons';
 import { GogglesOnBoard, MalOnBoard, HorsZoa, } from './OnBoardAssets';
 
 //Packages
-import { useTheme, Text, VStack } from 'native-base';
+import { Text, VStack, View, NativeBaseProvider } from 'native-base';
 import Animated, { FadeInLeft, FadeInRight, SlideInUp } from 'react-native-reanimated';
 
 
@@ -13,57 +14,78 @@ import Animated, { FadeInLeft, FadeInRight, SlideInUp } from 'react-native-reani
     OnBoardingScreen
 */ 
 
-const OnBoardingScreen = ({ navigation, route,}) => {
-  const { color, contain, fonts } = useTheme();
+const OnBoardingScreen = ({ navigation, }) => {
+  const { color, fonts } = appTheme;
 
   const toHome = () => { 
     navigation.navigate('HomeStack')
   };
 
   return (
-    <Animated.View style={contain}>
+    <NativeBaseProvider >
+      <View 
+        testID='onBoardView' 
+        style={{
+          flex: 1,
+          padding: 2,
+          backgroundColor: color.black
+        }}
+      >
 
-      {/*------------------
-        *   Mal Img       *
-      --------------------*/}
-      <Animated.View entering={SlideInUp.duration(1000).springify(6)}>
-        <MalOnBoard />
-      </Animated.View>
+        {/*---------------------------------------------*
+          *   Mal SVG Img with entering animations      *
+        ------------------------------------------------*/}
+        <Animated.View entering={SlideInUp.duration(1000).springify(6)}>
+          <MalOnBoard />
+        </Animated.View>
 
-          {/*-----------------------
-            *   Title & Button    *
-          ------------------------*/}
-          <VStack 
-            flex={1} 
-            space={2} 
-            mt='6' 
-            mx='8'
-            alignItems='center' 
-            justifyContent='center'
-          >
-         
-              <Text p='4' fontFamily={fonts.head} fontSize='42' color={color.yellow}> 
-                I Shoot Coral
-              </Text>
-               <LoadingButton px='20' py='4' onPress={toHome} text='Okay!'/>
-            </VStack>
+            {/*-------------------------------------------*
+              *   Title & Button - flexDirection column   *
+            ----------------------------------------------*/}
+            <VStack 
+              flex={1} 
+              space={2} 
+              mt='6' 
+              mx='8'
+              alignItems='center' 
+              justifyContent='center'
+            >
+            
+                <Text 
+                  p='4'
+                  accessibilityRole='header' 
+                  testID='iShootText'  
+                  fontFamily={fonts.head} 
+                  fontSize='42' 
+                  color={color.yellow}
+                > 
+                  I Shoot Coral
+                </Text>
 
-              {/*-------------------
-                *   Zoa Img       *
-              --------------------*/}
-              <Animated.View entering={FadeInRight.delay(300)}>
-                <HorsZoa />
-              </Animated.View>
-              {/*-------------------
-                *  Goggles Logo   *
-              --------------------*/}
-              <Animated.View 
-                style={{zIndex: -1}}
-                entering={FadeInLeft.delay(1000)}
-              >
-                <GogglesOnBoard />
-              </Animated.View>
-    </Animated.View>
+                  <LoadingButton 
+                    px='20' 
+                    py='4' 
+                    onPress={toHome} 
+                    text='Okay!'
+                  />
+
+              </VStack>
+
+                {/*--------------------------------------------------*
+                  *   Zoa SVG Img with entering animations           *
+                -----------------------------------------------------*/}
+                <Animated.View entering={FadeInRight.delay(300)}>
+                  <HorsZoa />
+                </Animated.View>
+
+                {/*--------------------------------------------------*
+                  *  Goggles Logo SVG Img with entering animations   *
+                -----------------------------------------------------*/}
+                <Animated.View style={{zIndex: -1}} entering={FadeInLeft.delay(1000)}>
+                  <GogglesOnBoard />
+                </Animated.View>
+      </View>
+    </NativeBaseProvider>
   );
 };
 

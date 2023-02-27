@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Linking, SafeAreaView  } from 'react-native';
+import { appTheme } from '../../theme/theme';
 
 //Components & Constants
 import { windowHeight, windowWidth } from '../../utilities/constants';
@@ -10,15 +11,15 @@ import { EmailMeButton } from '../../components/buttons/buttons';
 import LoadingScreen from '../LoadingScreen';
 
 //Packages
-import { useTheme, ScrollView, View, HStack, Image } from 'native-base';
-import Animated, { RollInLeft, SlideInLeft, SlideInUp, withSpring, withTiming, clockRunning } from 'react-native-reanimated';
+import { ScrollView, View, HStack, Image } from 'native-base';
+import Animated, { FadeInDown, FadeInUp, FadeIn } from 'react-native-reanimated';
 
 /*----AboutScreen-------
     AboutScreen
 */ 
 
 export default function AboutScreen({navigation, route,}) {
-    const { color } = useTheme();
+    const { color } = appTheme;
     const [isLoading, setIsLoading] = useState(false);
 
     {/*--------------------*
@@ -45,6 +46,7 @@ export default function AboutScreen({navigation, route,}) {
         backgroundColor: color.black,
       }}
     >
+
       {/*---------------------*
         *   Goggle Logo       *
         *---------------------*/}
@@ -67,35 +69,40 @@ export default function AboutScreen({navigation, route,}) {
               {/*--------------------------*
                 *   Intro Heading/Text     *
                 *--------------------------*/}
-              <View>
+              <Animated.View entering={ FadeInUp.delay(1000).springify(180)}>
                 <SubHeadTitle text='Location' size='lg' w='240' /> 
-              </View>
-              <View>
+              </Animated.View>
+              <Animated.View entering={ FadeInDown.delay(1000).springify(180)}>
                 <SubHeadTitle text='Boston, MA' size='lg' w='240' /> 
-              </View>
+              </Animated.View>
             </HStack>
               <IntroText />
+
+
               {/*------------------*
                 *   Photo Text     *
                 *------------------*/}
-              <View alignSelf='center' p='4'>
+              <Animated.View style={{ alignSelf: 'center', padding: 4 }} entering={FadeIn.delay(1500)}>
                 <SubHeadTitle text='Photography' size='lg' w='280' /> 
-              </View>
+              </Animated.View>
                 <PhotoText />
+
                 {/*------------------------*
                   *   Contact Text         *
                   *------------------------*/}
-                <View alignSelf='center' p='4'>
+                <Animated.View style={{ alignSelf: 'center', padding: 4 }} entering={FadeIn.delay(1800)}>
                   <SubHeadTitle text='Contact' size='lg' w='200' /> 
-                </View>
+                </Animated.View>
+
                   <View mt='6'>
                     <ContactText />
+
                     {/*------------------------*
                       *   Email Button         *
                       *------------------------*/}
-                    <EmailMeButton 
-                      onPress={() => { mailMe() }} 
-                    /> 
+                    <EmailMeButton onPress={() => { mailMe() }} /> 
+
+
                     <Image 
                       source={require('../../assets/images/logo/rainbow-fish.png')}
                       alt='fish'

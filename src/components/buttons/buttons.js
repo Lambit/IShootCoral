@@ -1,23 +1,30 @@
 import React from 'react'
+import { appTheme } from '../../theme/theme';
 
 //Packages
-import { useTheme, Button, Pressable , Text, View } from 'native-base';
-import Animated, { useSharedValue, useAnimatedStyle, withSequence, withRepeat, withTiming, withSpring } from 'react-native-reanimated';
+import { Button, Pressable , Text, View } from 'native-base';
+import Animated, { useSharedValue, useAnimatedStyle, withSequence, withSpring } from 'react-native-reanimated';
 import Feather from 'react-native-vector-icons/Feather';
 
 /*---------------------------------
  *   Loading Button               *
 ----------------------------------*/ 
 export const LoadingButton = ({ isLoading, isDisabled, _spinner, onPress, mx, my, py, px, text }) => {
-    const { color, weights, bR } = useTheme();
+    const { color, weights, bR } = appTheme;
     const buttonScaled = useSharedValue(1);
 
+    /*-------Reanimated Styles-----------*/
     const animatedStyle = useAnimatedStyle(() => {
         return {
-        transform: [{ scale: buttonScaled.value }]
+            transform: [
+                { 
+                    scale: buttonScaled.value 
+                }
+            ]
         };
     });
 
+    /*-------onPress change reanimated's sharedValue-----------*/
     const animatedPress = () => {
         buttonScaled.value = withSequence(withSpring(.9), withSpring(1))
     };
@@ -33,6 +40,8 @@ export const LoadingButton = ({ isLoading, isDisabled, _spinner, onPress, mx, my
                 my={my}
                 py={py}
                 px={px}
+                testID='loadingButton'
+                accessibilityRole='button'
                 size='lg'
                 bg={color.dPurple}
                 borderRadius={bR.pill}
@@ -67,14 +76,10 @@ export const CircleButton = ({
     // icon
     icon, color, size
     }) => {
+        
     return (
+
         <Pressable
-            p='4'
-            alignSelf='flex-start'
-            rounded='full'
-            flexDirection='row'
-            opacity='.6'
-            borderWidth='1'
             borderColor={borderColor}
             zIndex={zIndex}
             position={position}
@@ -83,15 +88,28 @@ export const CircleButton = ({
             mt={mt}
             ml={ml}
             bg={bg}
-            shadow={4}
             onPress={onPress}
+            testID='circleButton'
+            accessibilityRole='button'
+            p='4'
+            alignSelf='flex-start'
+            rounded='full'
+            flexDirection='row'
+            opacity='.6'
+            borderWidth='1'
+            shadow={4}
             _pressed={{
                 opacity: '.7',
                 transform: [{ scale: .9 }],
             }}
         >
 
-            <Feather name={icon} size={size} color={color} />
+            <Feather 
+                name={icon} 
+                size={size} 
+                color={color}
+                testID='circleButtonIcon'
+            />
 
         </Pressable>
     );
@@ -102,13 +120,15 @@ export const CircleButton = ({
  *   Email Me Button               *
  ----------------------------------*/ 
 export const EmailMeButton = ({ onPress }) => {
-    const { color, fonts, bR, glow } = useTheme();
+    const { color, fonts, bR, glow } = appTheme;
     return (
         <Pressable 
+            onPress={onPress}
             mt='4' 
             p='2' 
+            testID='emailMeButton'
+            accessibilityRole='button'
             borderRadius={bR.pill}  
-            onPress={onPress}
             _pressed={{ 
               opacity: .5,
               backgroundColor: color.overlay,
@@ -116,12 +136,14 @@ export const EmailMeButton = ({ onPress }) => {
               borderWidth: 1
             }}
         >
-            <View  p='2' shadow={glow}>
-                <Text  
-                  color={color.aqua} 
-                  fontFamily={fonts.head} 
-                  fontSize='36' 
-                  textAlign='center' 
+            <View p='2' shadow={glow}>
+                <Text
+                    testID='emailMeButtonText'
+                    accessibilityRole='text'  
+                    color={color.aqua} 
+                    fontFamily={fonts.head} 
+                    fontSize='36' 
+                    textAlign='center' 
                 >
                     Email Me!
                 </Text>

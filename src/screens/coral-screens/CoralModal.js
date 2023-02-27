@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { appTheme } from '../../theme/theme';
 
 //Components & Constants
 import { windowHeight, windowWidth } from '../../utilities/constants';
 import { CircleButton } from '../../components/buttons/buttons';
-import Animated, { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
 //Packages
-import { useTheme, Pressable } from 'native-base';
+import { Pressable } from 'native-base';
 
 /*----CoralModal-------
     Screen to view the corals full size Image, displayed as a transparent modal.
@@ -17,8 +18,8 @@ import { useTheme, Pressable } from 'native-base';
 
 const CoralModal = ({navigation, route,}) => {
     //---theme and params, to display specific coral selected------
-    const { color, bR, fill } = useTheme();
-    const { coralArr, coralId, coralName, coralImg } = route.params;
+    const { color, fill } = appTheme;
+    const { coralId, coralName, coralImg } = route.params;
     const [isLoading, setIsLoading] = useState(false);
     
     //----go back on button press-----
@@ -43,26 +44,30 @@ const CoralModal = ({navigation, route,}) => {
 
   const dragGesture = Gesture.Pan()
   .averageTouches(true)
+  .enableTrackpadTwoFingerGesture(true)
+  .shouldCancelWhenOutside(true)
+  .enabled(scale)
   .onUpdate((e) => {
     offset.value = {
       x: e.translationX + start.value.x,
       y: e.translationY + start.value.y,
       
     };
-     console.log(e, 'drag')
+    //  console.log(offset.value, 'drag')
   })
-  .onEnd(() => {
+  .onEnd((e) => {
     start.value = {
       x: offset.value.x,
       y: offset.value.y,
     };
+    // console.log(e, 'end')
   });
 
 
   const zoomGesture = Gesture.Pinch()
   .onUpdate((event) => {
     scale.value = savedScale.value * event.scale;
-     console.log(event, 'pinch')
+    //  console.log(event, 'pinch')
   })
   .onEnd(() => {
     savedScale.value = scale.value;
@@ -79,16 +84,15 @@ const CoralModal = ({navigation, route,}) => {
      *   View set to dynamically fit screen types.   *
     ------------------------------------------------ */
     <Animated.View 
-        style={{ 
-          flex: 1, 
-          padding: 2, 
-          width: windowWidth, 
-          height: windowHeight, 
-          justifyContent: 'center', 
-          alignItems:'center',
-          bg:color.overlay}
-     
-        }
+      style={{ 
+        flex: 1, 
+        padding: 2, 
+        width: windowWidth, 
+        height: windowHeight, 
+        justifyContent: 'center', 
+        alignItems:'center',
+        bg:color.overlay
+      }}
     >
       <Pressable flex={1} style={fill}bg={color.overlay} onPress={goBackBtn}>
         {/*------------------------
@@ -114,17 +118,17 @@ const CoralModal = ({navigation, route,}) => {
               id={coralId}
               source={coralImg}
               alt={ coralName || coralId }
+              resizeMode='contain'
               style={[{ 
-                resizeMode: 'contain',
-                justifyContent:'center',
                 alignSelf: 'center',
-                position: 'absolute', 
-                bottom: 10,
-                top: 40,
-                height: windowHeight - 100,
-                width: windowWidth - 40,
-                borderRadius: bR.lg, 
-                }, animatedStyles]}
+                // position: 'absolute', 
+                // bottom: 10,
+                // top: 40,
+                // height: windowHeight - 100,
+                // width: windowWidth - 40,
+                // borderRadius: bR.lg, 
+                }, animatedStyles
+              ]}
             />
           </GestureDetector>  
        </Pressable>

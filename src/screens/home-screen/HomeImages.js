@@ -34,7 +34,6 @@ export const InkSplat = () => {
   *  RainbowFish Image   *
 -------------------------*/}
 export const RainbowFish = () => {
-
   return (
     <View 
       pt='10'

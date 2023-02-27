@@ -23,13 +23,7 @@ Simple booking app, layed out for a photographer. It consists of and intro page,
 the entry point, made up of theme provider and navigation container. Within in this container lives the screens of course. They consists of reusuable 
 components and styles to display each individual one. 
 
-<img src="https://user-images.githubusercontent.com/61482651/221541789-bcb71c24-0830-4f1c-81ea-e9334e244850.png" width="200" height="400">
-
-<img src="https://user-images.githubusercontent.com/61482651/221544663-aa9b7e39-678c-485a-af54-028c9c3d91e3.png" width="200" height="400">
-
-<img src="https://user-images.githubusercontent.com/61482651/221544795-13a5f3ca-ed60-443f-9af7-80c1a5c6fef1.png" width="200" height="400">
-
-<img src="https://user-images.githubusercontent.com/61482651/221544919-21784b57-404b-44c2-86db-82195bd9a5d5.png" width="200" height="400">
+<img src="https://user-images.githubusercontent.com/61482651/221541789-bcb71c24-0830-4f1c-81ea-e9334e244850.png" width="200" height="400"> <img src="https://user-images.githubusercontent.com/61482651/221544663-aa9b7e39-678c-485a-af54-028c9c3d91e3.png" width="200" height="400"> <img src="https://user-images.githubusercontent.com/61482651/221544795-13a5f3ca-ed60-443f-9af7-80c1a5c6fef1.png" width="200" height="400"> <img src="https://user-images.githubusercontent.com/61482651/221544919-21784b57-404b-44c2-86db-82195bd9a5d5.png" width="200" height="400">
 
 
 
